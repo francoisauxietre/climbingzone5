@@ -1,0 +1,86 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="climbingzone5App.climbingRoute.home.title">Climbing Routes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-climbing-route" [routerLink]="['/climbing-route/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="climbingzone5App.climbingRoute.home.createLabel">
+            Create a new Climbing Route
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="climbingRoutes?.length === 0">
+        <span jhiTranslate="climbingzone5App.climbingRoute.home.notFound">No climbingRoutes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="climbingRoutes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="climbingzone5App.climbingRoute.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bonus"><span jhiTranslate="climbingzone5App.climbingRoute.bonus">Bonus</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="latitude"><span jhiTranslate="climbingzone5App.climbingRoute.latitude">Latitude</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="longitude"><span jhiTranslate="climbingzone5App.climbingRoute.longitude">Longitude</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="difficuty"><span jhiTranslate="climbingzone5App.climbingRoute.difficuty">Difficuty</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="star"><span jhiTranslate="climbingzone5App.climbingRoute.star">Star</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="physical"><span jhiTranslate="climbingzone5App.climbingRoute.physical">Physical</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="technical"><span jhiTranslate="climbingzone5App.climbingRoute.technical">Technical</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tactical"><span jhiTranslate="climbingzone5App.climbingRoute.tactical">Tactical</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="mental"><span jhiTranslate="climbingzone5App.climbingRoute.mental">Mental</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="climbingzone5App.climbingRoute.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="modifiedAt"><span jhiTranslate="climbingzone5App.climbingRoute.modifiedAt">Modified At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="climbingzone5App.climbingRoute.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="routeType"><span jhiTranslate="climbingzone5App.climbingRoute.routeType">Route Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="zouneType"><span jhiTranslate="climbingzone5App.climbingRoute.zouneType">Zoune Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let climbingRoute of climbingRoutes ;trackBy: trackId">
+                <td><a [routerLink]="['/climbing-route', climbingRoute.id, 'view' ]">{{climbingRoute.id}}</a></td>
+                <td>{{climbingRoute.name}}</td>
+                <td>{{climbingRoute.bonus}}</td>
+                <td>{{climbingRoute.latitude}}</td>
+                <td>{{climbingRoute.longitude}}</td>
+                <td>{{climbingRoute.difficuty}}</td>
+                <td>{{climbingRoute.star}}</td>
+                <td>{{climbingRoute.physical}}</td>
+                <td>{{climbingRoute.technical}}</td>
+                <td>{{climbingRoute.tactical}}</td>
+                <td>{{climbingRoute.mental}}</td>
+                <td>{{climbingRoute.createdAt | date:'medium'}}</td>
+                <td>{{climbingRoute.modifiedAt | date:'medium'}}</td>
+                <td>{{climbingRoute.deletedAt | date:'medium'}}</td>
+                <td jhiTranslate="{{'climbingzone5App.RouteType.' + climbingRoute.routeType}}">{{climbingRoute.routeType}}</td>
+                <td jhiTranslate="{{'climbingzone5App.ZoneType.' + climbingRoute.zouneType}}">{{climbingRoute.zouneType}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/climbing-route', climbingRoute.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/climbing-route', climbingRoute.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/climbing-route', { outlets: { popup: climbingRoute.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

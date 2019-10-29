@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-climbing-route-heading" jhiTranslate="climbingzone5App.climbingRoute.home.createOrEditLabel">Create or edit a Climbing Route</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.bonus" for="field_bonus">Bonus</label>
+                    <input type="text" class="form-control" name="bonus" id="field_bonus"
+                           formControlName="bonus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.difficuty" for="field_difficuty">Difficuty</label>
+                    <input type="text" class="form-control" name="difficuty" id="field_difficuty"
+                           formControlName="difficuty"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.star" for="field_star">Star</label>
+                    <input type="number" class="form-control" name="star" id="field_star"
+                           formControlName="star"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.physical" for="field_physical">Physical</label>
+                    <input type="number" class="form-control" name="physical" id="field_physical"
+                           formControlName="physical"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.technical" for="field_technical">Technical</label>
+                    <input type="number" class="form-control" name="technical" id="field_technical"
+                           formControlName="technical"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.tactical" for="field_tactical">Tactical</label>
+                    <input type="number" class="form-control" name="tactical" id="field_tactical"
+                           formControlName="tactical"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.mental" for="field_mental">Mental</label>
+                    <input type="number" class="form-control" name="mental" id="field_mental"
+                           formControlName="mental"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.createdAt" for="field_createdAt">Created At</label>
+                    <div class="d-flex">
+                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.modifiedAt" for="field_modifiedAt">Modified At</label>
+                    <div class="d-flex">
+                        <input id="field_modifiedAt" type="datetime-local" class="form-control" name="modifiedAt" formControlName="modifiedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.deletedAt" for="field_deletedAt">Deleted At</label>
+                    <div class="d-flex">
+                        <input id="field_deletedAt" type="datetime-local" class="form-control" name="deletedAt" formControlName="deletedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.routeType" for="field_routeType">Route Type</label>
+                    <select class="form-control" name="routeType" formControlName="routeType" id="field_routeType">
+                        <option value="BOULDER">{{'climbingzone5App.RouteType.BOULDER' | translate}}</option>
+                        <option value="ROUTE">{{'climbingzone5App.RouteType.ROUTE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.climbingRoute.zouneType" for="field_zouneType">Zoune Type</label>
+                    <select class="form-control" name="zouneType" formControlName="zouneType" id="field_zouneType">
+                        <option value="INTERIOR">{{'climbingzone5App.ZoneType.INTERIOR' | translate}}</option>
+                        <option value="EXTERIOR">{{'climbingzone5App.ZoneType.EXTERIOR' | translate}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

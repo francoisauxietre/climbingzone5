@@ -1,0 +1,110 @@
+entity Climber {
+	firstName String,
+    lastName String,
+    birth Instant,
+    createdAt Instant,
+    modifiedAt Instant,
+    deletedAt Instant,
+    language Language
+}
+
+entity ClimbingRoute{
+    name String,
+    bonus String,
+    latitude Float,
+    longitude Float,
+    difficuty String,
+    star Integer,
+    physical Integer,
+    technical Integer,
+    tactical Integer,
+    mental Integer,
+    createdAt Instant,
+    modifiedAt Instant,
+    deletedAt Instant,
+    routeType RouteType,
+    zouneType ZoneType,
+    
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+enum RouteType{
+		BOULDER, ROUTE
+}
+enum ZoneType{
+    INTERIOR, EXTERIOR
+}
+
+entity Country {
+	name String
+}
+
+entity Place {
+	name String,
+	latitude Float,
+	longitude Float,
+}
+
+entity Card {
+    cardId Long,
+    star Integer,
+    level String,
+	qrcode String,
+    climberPlace Integer,
+    climberTotal Integer,
+    place String,
+    photo String,
+    climbingRouteName String,
+    physical Integer,
+    technical Integer,
+    tactical Integer,
+    mental Integer,
+    bonus String,
+    climberFirstName String,
+    climberLastName String
+    
+}
+
+entity Parking {
+	name String,
+	description String
+}
+
+
+relationship ManyToOne {
+	Climber{cards} to Card{climber}
+}
+
+relationship ManyToMany {
+	Climber{friends} to Climber{fromFriends}
+}
+
+relationship ManyToOne {
+	Climber{openBy} to ClimbingRoute{opener}
+}
+
+relationship OneToMany {
+	ClimbingRoute{place} to Place{located}
+}
+
+relationship OneToMany {
+	Climber{country} to Country{climbers}
+}
+
+relationship ManyToOne {
+	Place{parkings} to Parking{place}
+}
+
+// Set pagination options
+paginate Climber, ClimbingRoute with infinite-scroll
+paginate Place, Parking with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Parking
+
+

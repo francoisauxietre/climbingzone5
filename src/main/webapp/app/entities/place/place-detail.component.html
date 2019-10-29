@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="place">
+            <h2><span jhiTranslate="climbingzone5App.place.detail.title">Place</span> {{place.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="climbingzone5App.place.name">Name</span></dt>
+                <dd>
+                    <span>{{place.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.place.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{place.latitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.place.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{place.longitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.place.parkings">Parkings</span></dt>
+                <dd>
+                    <div *ngIf="place.parkingsId">
+                        <a [routerLink]="['/parking', place.parkingsId, 'view']">{{place.parkingsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.place.located">Located</span></dt>
+                <dd>
+                    <div *ngIf="place.locatedId">
+                        <a [routerLink]="['/climbing-route', place.locatedId, 'view']">{{place.locatedId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/place', place.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

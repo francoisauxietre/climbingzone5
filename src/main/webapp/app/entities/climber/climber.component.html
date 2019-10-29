@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="climbingzone5App.climber.home.title">Climbers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-climber" [routerLink]="['/climber/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="climbingzone5App.climber.home.createLabel">
+            Create a new Climber
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="climbers?.length === 0">
+        <span jhiTranslate="climbingzone5App.climber.home.notFound">No climbers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="climbers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="firstName"><span jhiTranslate="climbingzone5App.climber.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lastName"><span jhiTranslate="climbingzone5App.climber.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="birth"><span jhiTranslate="climbingzone5App.climber.birth">Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="climbingzone5App.climber.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="modifiedAt"><span jhiTranslate="climbingzone5App.climber.modifiedAt">Modified At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="climbingzone5App.climber.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="language"><span jhiTranslate="climbingzone5App.climber.language">Language</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cardsId"><span jhiTranslate="climbingzone5App.climber.cards">Cards</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="openById"><span jhiTranslate="climbingzone5App.climber.openBy">Open By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let climber of climbers ;trackBy: trackId">
+                <td><a [routerLink]="['/climber', climber.id, 'view' ]">{{climber.id}}</a></td>
+                <td>{{climber.firstName}}</td>
+                <td>{{climber.lastName}}</td>
+                <td>{{climber.birth | date:'medium'}}</td>
+                <td>{{climber.createdAt | date:'medium'}}</td>
+                <td>{{climber.modifiedAt | date:'medium'}}</td>
+                <td>{{climber.deletedAt | date:'medium'}}</td>
+                <td jhiTranslate="{{'climbingzone5App.Language.' + climber.language}}">{{climber.language}}</td>
+                <td>
+                    <div *ngIf="climber.cardsId">
+                        <a [routerLink]="['/card', climber.cardsId , 'view' ]" >{{climber.cardsId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="climber.openById">
+                        <a [routerLink]="['/climbing-route', climber.openById , 'view' ]" >{{climber.openById}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/climber', climber.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/climber', climber.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/climber', { outlets: { popup: climber.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

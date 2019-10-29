@@ -1,0 +1,87 @@
+{
+    "name": "Card",
+    "fields": [
+        {
+            "fieldName": "cardId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "star",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "level",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qrcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "climberPlace",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "climberTotal",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "place",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "climbingRouteName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "physical",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "technical",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tactical",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "mental",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "bonus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "climberFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "climberLastName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "climber",
+            "otherEntityRelationshipName": "cards",
+            "relationshipName": "climber"
+        }
+    ],
+    "changelogDate": "20191029133519",
+    "entityTableName": "card",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

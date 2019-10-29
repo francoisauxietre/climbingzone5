@@ -1,0 +1,38 @@
+{
+  "climbingzone5App": {
+    "card": {
+      "home": {
+        "title": "Cards",
+        "createLabel": "Créer un nouveau Card",
+        "createOrEditLabel": "Créer ou éditer un Card",
+        "notFound": "Aucun Card trouvé"
+      },
+      "created": "Un nouveau Card a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Card avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Card avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Card {{ id }} ?"
+      },
+      "detail": {
+        "title": "Card"
+      },
+      "cardId": "Card Id",
+      "star": "Star",
+      "level": "Level",
+      "qrcode": "Qrcode",
+      "climberPlace": "Climber Place",
+      "climberTotal": "Climber Total",
+      "place": "Place",
+      "photo": "Photo",
+      "climbingRouteName": "Climbing Route Name",
+      "physical": "Physical",
+      "technical": "Technical",
+      "tactical": "Tactical",
+      "mental": "Mental",
+      "bonus": "Bonus",
+      "climberFirstName": "Climber First Name",
+      "climberLastName": "Climber Last Name",
+      "climber": "Climber"
+    }
+  }
+}

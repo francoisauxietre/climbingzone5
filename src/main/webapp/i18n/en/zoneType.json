@@ -1,0 +1,9 @@
+{
+  "climbingzone5App": {
+    "ZoneType": {
+      "null": "",
+      "INTERIOR": "INTERIOR",
+      "EXTERIOR": "EXTERIOR"
+    }
+  }
+}

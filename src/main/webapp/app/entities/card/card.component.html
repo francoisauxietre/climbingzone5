@@ -1,0 +1,88 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="climbingzone5App.card.home.title">Cards</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-card" [routerLink]="['/card/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="climbingzone5App.card.home.createLabel">
+            Create a new Card
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="cards?.length === 0">
+        <span jhiTranslate="climbingzone5App.card.home.notFound">No cards found</span>
+    </div>
+    <div class="table-responsive" *ngIf="cards?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.cardId">Card Id</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.star">Star</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.level">Level</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.qrcode">Qrcode</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.climberPlace">Climber Place</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.climberTotal">Climber Total</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.place">Place</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.photo">Photo</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.climbingRouteName">Climbing Route Name</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.physical">Physical</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.technical">Technical</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.tactical">Tactical</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.mental">Mental</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.bonus">Bonus</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.climberFirstName">Climber First Name</span></th>
+            <th scope="col" ><span jhiTranslate="climbingzone5App.card.climberLastName">Climber Last Name</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let card of cards ;trackBy: trackId">
+                <td><a [routerLink]="['/card', card.id, 'view' ]">{{card.id}}</a></td>
+                <td>{{card.cardId}}</td>
+                <td>{{card.star}}</td>
+                <td>{{card.level}}</td>
+                <td>{{card.qrcode}}</td>
+                <td>{{card.climberPlace}}</td>
+                <td>{{card.climberTotal}}</td>
+                <td>{{card.place}}</td>
+                <td>{{card.photo}}</td>
+                <td>{{card.climbingRouteName}}</td>
+                <td>{{card.physical}}</td>
+                <td>{{card.technical}}</td>
+                <td>{{card.tactical}}</td>
+                <td>{{card.mental}}</td>
+                <td>{{card.bonus}}</td>
+                <td>{{card.climberFirstName}}</td>
+                <td>{{card.climberLastName}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/card', card.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/card', card.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/card', { outlets: { popup: card.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

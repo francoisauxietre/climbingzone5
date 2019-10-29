@@ -1,0 +1,9 @@
+{
+  "climbingzone5App": {
+    "RouteType": {
+      "null": "",
+      "BOULDER": "BOULDER",
+      "ROUTE": "ROUTE"
+    }
+  }
+}

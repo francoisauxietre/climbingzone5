@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="card">
+            <h2><span jhiTranslate="climbingzone5App.card.detail.title">Card</span> {{card.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="climbingzone5App.card.cardId">Card Id</span></dt>
+                <dd>
+                    <span>{{card.cardId}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.star">Star</span></dt>
+                <dd>
+                    <span>{{card.star}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.level">Level</span></dt>
+                <dd>
+                    <span>{{card.level}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.qrcode">Qrcode</span></dt>
+                <dd>
+                    <span>{{card.qrcode}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.climberPlace">Climber Place</span></dt>
+                <dd>
+                    <span>{{card.climberPlace}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.climberTotal">Climber Total</span></dt>
+                <dd>
+                    <span>{{card.climberTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.place">Place</span></dt>
+                <dd>
+                    <span>{{card.place}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.photo">Photo</span></dt>
+                <dd>
+                    <span>{{card.photo}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.climbingRouteName">Climbing Route Name</span></dt>
+                <dd>
+                    <span>{{card.climbingRouteName}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.physical">Physical</span></dt>
+                <dd>
+                    <span>{{card.physical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.technical">Technical</span></dt>
+                <dd>
+                    <span>{{card.technical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.tactical">Tactical</span></dt>
+                <dd>
+                    <span>{{card.tactical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.mental">Mental</span></dt>
+                <dd>
+                    <span>{{card.mental}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.bonus">Bonus</span></dt>
+                <dd>
+                    <span>{{card.bonus}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.climberFirstName">Climber First Name</span></dt>
+                <dd>
+                    <span>{{card.climberFirstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.card.climberLastName">Climber Last Name</span></dt>
+                <dd>
+                    <span>{{card.climberLastName}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/card', card.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

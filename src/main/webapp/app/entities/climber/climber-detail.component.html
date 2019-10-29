@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="climber">
+            <h2><span jhiTranslate="climbingzone5App.climber.detail.title">Climber</span> {{climber.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="climbingzone5App.climber.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{climber.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{climber.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.birth">Birth</span></dt>
+                <dd>
+                    <span>{{climber.birth}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{climber.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.modifiedAt">Modified At</span></dt>
+                <dd>
+                    <span>{{climber.modifiedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{climber.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.language">Language</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'climbingzone5App.Language.' + climber.language}}">{{climber.language}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.cards">Cards</span></dt>
+                <dd>
+                    <div *ngIf="climber.cardsId">
+                        <a [routerLink]="['/card', climber.cardsId, 'view']">{{climber.cardsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.openBy">Open By</span></dt>
+                <dd>
+                    <div *ngIf="climber.openById">
+                        <a [routerLink]="['/climbing-route', climber.openById, 'view']">{{climber.openById}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climber.friends">Friends</span></dt>
+                <dd>
+                    <span *ngFor="let friends of climber.friends; let last = last">
+                        <a [routerLink]="['/climber', friends?.id, 'view' ]">{{friends.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/climber', climber.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-place-heading" jhiTranslate="climbingzone5App.place.home.createOrEditLabel">Create or edit a Place</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.place.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.place.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.place.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.place.parkings" for="field_parkings">Parkings</label>
+                    <select class="form-control" id="field_parkings" name="parkings" formControlName="parkingsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parkingOption.id" *ngFor="let parkingOption of parkings; trackBy: trackParkingById">{{parkingOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="climbingzone5App.place.located" for="field_located">Located</label>
+                    <select class="form-control" id="field_located" name="located" formControlName="locatedId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="climbingRouteOption.id" *ngFor="let climbingRouteOption of climbingroutes; trackBy: trackClimbingRouteById">{{climbingRouteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

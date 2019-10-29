@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="climbingRoute">
+            <h2><span jhiTranslate="climbingzone5App.climbingRoute.detail.title">Climbing Route</span> {{climbingRoute.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.name">Name</span></dt>
+                <dd>
+                    <span>{{climbingRoute.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.bonus">Bonus</span></dt>
+                <dd>
+                    <span>{{climbingRoute.bonus}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{climbingRoute.latitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{climbingRoute.longitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.difficuty">Difficuty</span></dt>
+                <dd>
+                    <span>{{climbingRoute.difficuty}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.star">Star</span></dt>
+                <dd>
+                    <span>{{climbingRoute.star}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.physical">Physical</span></dt>
+                <dd>
+                    <span>{{climbingRoute.physical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.technical">Technical</span></dt>
+                <dd>
+                    <span>{{climbingRoute.technical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.tactical">Tactical</span></dt>
+                <dd>
+                    <span>{{climbingRoute.tactical}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.mental">Mental</span></dt>
+                <dd>
+                    <span>{{climbingRoute.mental}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{climbingRoute.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.modifiedAt">Modified At</span></dt>
+                <dd>
+                    <span>{{climbingRoute.modifiedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{climbingRoute.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.routeType">Route Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'climbingzone5App.RouteType.' + climbingRoute.routeType}}">{{climbingRoute.routeType}}</span>
+                </dd>
+                <dt><span jhiTranslate="climbingzone5App.climbingRoute.zouneType">Zoune Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'climbingzone5App.ZoneType.' + climbingRoute.zouneType}}">{{climbingRoute.zouneType}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/climbing-route', climbingRoute.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
